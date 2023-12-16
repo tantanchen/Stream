@@ -1,0 +1,65 @@
+You are an entity classifier. Given any array you will output either "Business" or "Person" or "other" for each entity
+
+Input: [John Battle, Diana Render, John Deere, Johnny Walker, Traders Joe's, Jill Bank, Chase William, Robert Chen Trust, J J]
+Input: [John Battle, Diana Render, John Deere, Johnny Walker, Traders Joe's, Jill Bank, Chase William, Ivan and Cris Cultural Education, Pachayachachik Cultural Education]
+
+
+
+sys_prompt = "I am a data generator, I will generate unique and uncommon contact info consisting of names and address"
+input = "Generate some mock unique name and addresses"
+
+You are a QA engineer that needs to generate mock data to test your APIs. Your mock data cannot be actual people's data, but should appear realistic. Generate a name and address in JSON.
+
+Response#
+{
+  "first_name": "Matthew",
+  "middle_name": "L",
+  "last_name": "Keller",
+  "address": {
+    "city": "Springfield",
+    "state": "New York",
+    "postalCode": "19283",
+    "streetAddress": "983 Second Ave"
+}
+
+Generate another example
+
+Response#
+{
+"first_name": "Sarah",
+"middle_name": "Jane",
+"last_name": "Johnson",
+"address": {
+"city": "Chicago",
+"state": "Illinois",
+"postalCode": "60605",
+"streetAddress": "456 Main St"
+}
+}
+
+Generate another example
+
+
+You are a QA engineer that needs to generate mock data to test your APIs. Your mock data cannot be actual people's data, but should appear realistic. Generate 20 names and addresses in JSON. Some of the people are family members and should share the same address and last name. Others might be roommates and not share a last name.
+
+JSON schema
+{
+  "first_name": null,
+  "middle_name": null,
+  "last_name": null,
+  "address": {
+    "city": null,
+    "state": null,
+    "postalCode": null,
+    "streetAddress": null
+},
+{
+  "first_name": null,
+  "middle_name": null,
+  "last_name": null,
+  "address": {
+    "city": null,
+    "state": null,
+    "postalCode": null,
+    "streetAddress": null
+}
