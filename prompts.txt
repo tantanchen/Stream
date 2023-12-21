@@ -51,7 +51,9 @@ JSON schema
     "city": null,
     "state": null,
     "postalCode": null,
-    "streetAddress": null
+    "streetAddress1": null,
+    "streetAddress2": null,
+    "censusBlockGroup": null
 },
 {
   "first_name": null,
@@ -61,5 +63,212 @@ JSON schema
     "city": null,
     "state": null,
     "postalCode": null,
-    "streetAddress": null
+    "streetAddress1": null,
+    "streetAddress2": null,
+    "censusBlockGroup": null
+}
+
+
+You are a QA engineer that needs to generate mock data to test your APIs. Your mock data cannot be actual people's data, but should appear realistic. Generate 20 names and addresses in JSON. The city, state, zipcode, and census block should all be real.
+
+JSON schema
+{
+  "first_name": null,
+  "middle_name": null,
+  "last_name": null,
+  "address": {
+    "city": null,
+    "state": null,
+    "postalCode": null,
+    "streetAddress1": null,
+    "streetAddress2": null,
+    "censusBlockGroup": null
+}
+
+You are a data entry specialist. You will be even some contact info. You need to validate that all the addresses are real.
+
+[
+{
+"first_name": "Ava",
+"middle_name": "Lynn",
+"last_name": "Johnson",
+"address": {
+"city": "New York",
+"state": "NY",
+"postalCode": "10001",
+"streetAddress1": "123 Main St",
+"streetAddress2": "Apt 3B",
+"censusBlockGroup": "123456789"
+}
+},
+{
+"first_name": "Brian",
+"middle_name": "David",
+"last_name": "Williams",
+"address": {
+"city": "Anytown",
+"state": "CA",
+"postalCode": "90001",
+"streetAddress1": "456 Maple St",
+"streetAddress2": "Unit 23",
+"censusBlockGroup": "987654321"
+}
+},
+{
+"first_name": "Charles",
+"middle_name": "James",
+"last_name": "Smith",
+"address": {
+"city": "Chicago",
+"state": "IL",
+"postalCode": "60601",
+"streetAddress1": "321 Oak St",
+"streetAddress2": "Apt 12",
+"censusBlockGroup": "111111111"
+}
+},
+{
+"first_name": "Diana",
+"middle_name": "Rose",
+"last_name": "Brown",
+"address": {
+"city": "Houston",
+"state": "TX",
+"postalCode": "77001",
+"streetAddress1": "789 Elm St",
+"streetAddress2": "Suite 202",
+"censusBlockGroup": "222222222"
+}
+},
+{
+"first_name": "Emily",
+"middle_name": "Grace",
+"last_name": "Green",
+"address": {
+"city": "Phoenix",
+"state": "AZ",
+"postalCode": "85001",
+"streetAddress1": "1234 Main St",
+"streetAddress2": "Unit 345",
+"censusBlockGroup": "333333333"
+}
+},
+{
+"first_name": "Frank",
+"middle_name": "Edward",
+"last_name": "Davis",
+"address": {
+"city": "Philadelphia",
+"state": "PA",
+"postalCode": "19101",
+"streetAddress1": "2345 Market St",
+"streetAddress2": "Suite 100",
+"censusBlockGroup": "444444444"
+}
+},
+{
+"first_name": "Grace",
+"middle_name": "Marie",
+"last_name": "Baker",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}
+}
+
+
+You are a QA Engineer. You will look at some sample data and compare it to the ground truth data, and note any differences, classify them as minor or major
+
+Truth:
+{
+"first_name": "Grace",
+"middle_name": "Marie",
+"last_name": "Jones",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}
+
+Sample:
+{
+"first_name": "Grace",
+"middle_name": "M",
+"last_name": "Baker",
+"address": {
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"censusBlockGroup": "5555555555"
+}
+
+
+
+You are an Entity Resolution Experts. You will look at some sample data and compare it to the ground truth data, and note any differences, classify them as either the same entity or not
+
+Truth:
+{
+"first_name": "Grace",
+"middle_name": "Marie",
+"last_name": "Jones",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}
+
+Sample:
+{
+"first_name": "Grace",
+"middle_name": "M",
+"last_name": "Baker",
+"address": {
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"censusBlockGroup": "5555555555"
+}
+
+You are an Entity Resolution Experts. You will look at some sample data and compare it to the ground truth data, and note any differences, classify them as either the same entity or not
+
+Truth:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}
+
+Sample:
+{
+"first_name": "Grace",
+"middle_name": "M",
+"last_name": "Baker",
+"address": {
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"censusBlockGroup": "5555555555"
 }
