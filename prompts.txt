@@ -243,7 +243,7 @@ Sample:
 "censusBlockGroup": "5555555555"
 }
 
-You are an Entity Resolution Experts. You will look at some sample data and compare it to the ground truth data, and note any differences, classify them as either the same entity or not
+You are an Entity Resolution Expert. You will look at some sample data and compare it to the ground truth data, and note any differences, classify them as either the same entity or not
 
 Truth:
 {
@@ -270,5 +270,62 @@ Sample:
 "postalCode": "78201-4578",
 "streetAddress1": "5678 San Pedro Avenue",
 "streetAddress2": "Suite 20",
+"censusBlockGroup": "5555555555"
+}
+
+
+You are an Entity Resolution Expert participating a contest. If you do perform well, you will recieve a bonus of 100k dollars. You will look at two profiles and you will decide which profile is better. Better means a few things: All the names make sense, take a closer look at the initials, as the data might not be complete. Take into consideration that people can have married names or nick names. Check if the birthdays are within reason, some dates are same but formatted differently. Some dates might below to a different person, or might be completely wrong. Check that the addresses are real. Explain your reasoning step by step.
+
+Profile 1:
+{
+"names": ["Grace Baker Jones",  "Grace Jones", "Grace B Jones"]
+"dobs": ["05/16/1965", "5/16/1965", "01/05/1988"]
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}
+
+Profile 2:
+{
+"names": ["Grace Jones", "G B Jones", "Grace B Jones","Grace Baker", "Grace Baker Jones"]
+"dobs": ["16/05/1965", "05/16/1965", "5/16/1965"]
+"address": {
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "5555555555"
+}
+
+You are a data entry specialist. Your job is to look at several profiles, and create one profile by determining the most likely value for each attribute. Explain your reasoning step by step.
+
+Profile 1:
+{
+"names": ["Grace Baker Jones",  "Grace Jones", "Grace B Jones"]
+"dobs": ["05/16/1965", "5/16/1965", "01/05/1988"]
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}
+
+Profile 2:
+{
+"names": ["Grace Jones", "G B Jones", "Grace B Jones","Grace Baker", "Grace Baker Jones"]
+"dobs": ["16/05/1965", "05/16/1965", "5/16/1965"]
+"address": {
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 200",
 "censusBlockGroup": "5555555555"
 }
