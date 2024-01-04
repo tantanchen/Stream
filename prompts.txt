@@ -329,3 +329,140 @@ Profile 2:
 "streetAddress2": "Suite 200",
 "censusBlockGroup": "5555555555"
 }
+
+
+
+You are a data entry specialist. Your job is to look at several profiles, and create one profile by determining the most likely value for each attribute. Each profile will contain multiple records. When creating a new profile, pick the records that you think are the best for the profile. Explain your reasoning step by step. Here is your first profile
+
+Profile 1:
+{
+"recordID": 1111,
+"name": "Grace Baker Jones", 
+"dob": "05/16/1965",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}},
+{
+"recordID": 1341,
+"name": "Grace B Jones", 
+"dob": "16/05/1965",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1294 State St",
+"streetAddress2": "",
+"censusBlockGroup": "555555555"
+}},
+
+
+Profile 2:
+{
+"recordID": 1111,
+"name": "Grace Baker Jones", 
+"dob": "05/16/1965",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}},
+{
+"recordID": 2111,
+"name": "Grace Jones", 
+"dob": "09/12/1988",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}},
+{
+"recordID": 6347,
+"name": "Grace B Jones", 
+"dob": "05/16/1965",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1294 State St",
+"streetAddress2": "",
+"censusBlockGroup": "555555555"
+}},
+
+You are a QA engineer that needs to generate mock data to test your APIs. Your mock data cannot be actual people's data, but should appear realistic. You should create profiles where one profile should have multiple records.  Don't reuse any data in the example provided. This job is very important, if you succeed, you will recieve a bonus.
+
+
+Profile 1:
+{
+"recordID": 1111,
+"name": "Grace Baker Jones", 
+"dob": "05/16/1965",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}},
+{
+"recordID": 1341,
+"name": "Grace B Jones", 
+"dob": "16/05/1965",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1294 State St",
+"streetAddress2": "",
+"censusBlockGroup": "555555555"
+}},
+
+
+Profile 2:
+{
+"recordID": 1111,
+"name": "Grace Baker Jones", 
+"dob": "05/16/1965",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}},
+{
+"recordID": 2111,
+"name": "Grace Jones", 
+"dob": "09/12/1988",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"censusBlockGroup": "555555555"
+}},
+{
+"recordID": 6347,
+"name": "Grace B Jones", 
+"dob": "05/16/1965",
+"address": {
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1294 State St",
+"streetAddress2": "",
+"censusBlockGroup": "555555555"
+}},
