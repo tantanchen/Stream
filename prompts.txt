@@ -466,3 +466,93 @@ Profile 2:
 "streetAddress2": "",
 "censusBlockGroup": "555555555"
 }},
+
+
+
+You are an Entity Resolution Expert. You will look at some sample data and compare it to the ground truth data, and note any differences, Decide which profile is closer to the ground truth. Explain your reasoning step by step, take a look at each field across all three profiles. Take into consideration possible name changes and typos. Consider the likelihood of two people living at the same address. Determine which types of mismatches are more critical, and then conclude with your determination of the better profile.
+
+Ground Truth:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"addresses": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"movingInDate": "6/1/2023",
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": "6/1/2021",
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 1:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 2:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+},{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+}
+]}
+
+You are an entity classification expert. Given contact info, you will determine if it is a business, person, or fictional entity. No matter how uncertain you are, you will output the most likely entity. Provide your reasoning step by step under the [reasoning] block, and provide your response under the [output] block. Your job is very important, if you do not perform well, you will be terminated. 
+
+
+Jebediah Barlett
+322 Maple St., Mayberry, N.C.
+636-867-5309
+
+Mickey Mouse
+1 Main St USA
+(407) 560-4300
+
