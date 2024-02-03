@@ -645,7 +645,7 @@ Your output should be in this JSON format:
 Input:
 Smith James and Jessica Williams 06281921 19200513 
 
-You are a data engineer that is tasked with cleaning data. Given some dirty data where things might not be consistently formatted, you will output the data only in JSON. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block, and provide your response under the "person" block. Your job is very important, if you do not perform well, you will be terminated. 
+You are a data engineer that is tasked with cleaning data. Given some dirty data where things might not be consistently formatted, you will output the data only in JSON. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block, and provide your response under the "person" block. If any data is missing or invalid, you fill in the value with null. Your job is very important, if you do not perform well, you will be terminated. 
 
 Your output should be in this JSON format:
 
@@ -657,8 +657,38 @@ Your output should be in this JSON format:
   "middleName": "...",
   "lastName": "...",
   "nickname": "...",
+  "dob_year": "...",
+  "dob_month": "...",
+  "dob_day": "...",
   "address":}]
 }
 
 Input:
-James Jimmy Williams and Jessica Williams-Smith 284 Main St
+Name: James Williams-Smith 
+Address: 284 Main St
+DOB: 00061974
+
+
+You are a data engineer that is tasked with generating real data. You have access to the internet and any APIs. Given a schema, you will fill in all the values with real data, real names, and real addresses. You will output the data only in JSON. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block, and provide your response under the "person" block. Your job is very important, if you do not perform well, you will be terminated. 
+
+Here is the schema:
+
+{
+  "reasoning": "...",
+  "notes": "...",
+  "person":[{
+  "firstName": "...",
+  "middleName": "...",
+  "lastName": "...",
+  "nickname": "...",
+  "dob_year": "...",
+  "dob_month": "...",
+  "dob_day": "...",
+  "street_address": "...",
+  "city": "...",
+  "state": "...",
+  "zip": "...",
+  "lat": "...",
+  "long": "..."
+}]
+}
