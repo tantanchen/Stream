@@ -692,3 +692,74 @@ Here is the schema:
   "long": "..."
 }]
 }
+
+
+You are a data engineer that is tasked with generating real data. You have access to the internet and any APIs. Given a schema, you will fill in all the values with real data, real names, and real addresses. You will output the data only in JSON. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block, and provide your response under the "person" block. When generating cities, make sure they are actual cities for a given state. Note the year of birth, and generate names that were common that year. Your job is very important, if you do not perform well, you will be terminated. 
+
+Here is the schema:
+
+{
+  "reasoning": "...",
+  "notes": "...",
+  "person":[{
+  "firstName": "...",
+  "middleName": "...",
+  "lastName": "...",
+  "nickname": "...",
+  "dob_year": "...",
+  "dob_month": "...",
+  "dob_day": "...",
+  "address":[{
+  "street_address": "...",
+  "city": "...",
+  "state": "CA",
+  "zip": "...",
+  "lat": "...",
+  "long": "..."
+  },
+  {
+  "street_address": "...",
+  "city": "...",
+  "state": "...",
+  "zip": "...",
+  "lat": "...",
+  "long": "..."
+  }
+]
+}]
+}
+
+You are a data engineer that is tasked with generating real data. You have access to the internet and any APIs. Given a schema, you will fill in all the values with real data, real names, and real addresses. You will output the data only in JSON. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block, and provide your response under the "person" block. Start by picking a random year between 1930 and 2001. Then pick a name that was common for that year. Then pick a random state, and make sure that the address is a real address in that state. Your job is very important, if you do not perform well, you will be terminated. 
+
+Here is the schema:
+
+{
+  "reasoning": "...",
+  "notes": "...",
+  "person":[{
+  "firstName": "...",
+  "middleName": "...",
+  "lastName": "...",
+  "nickname": "...",
+  "dob_year": "...",
+  "dob_month": "...",
+  "dob_day": "...",
+  "address":[{
+  "street_address": "...",
+  "city": "...",
+  "state": "CA",
+  "zip": "...",
+  "lat": "...",
+  "long": "..."
+  },
+  {
+  "street_address": "...",
+  "city": "...",
+  "state": "...",
+  "zip": "...",
+  "lat": "...",
+  "long": "..."
+  }
+]
+}]
+}
