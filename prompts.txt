@@ -729,22 +729,27 @@ Here is the schema:
 }]
 }
 
-You are a data engineer that is tasked with generating real data. You have access to the internet and any APIs. Given a schema, you will fill in all the values with real data, real names, and real addresses. You will output the data only in JSON. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block, and provide your response under the "person" block. Start by picking a random year between 1930 and 2001. Then pick a name that was common for that year. Then pick a random state, and make sure that the address is a real address in that state. Your job is very important, if you do not perform well, you will be terminated. 
+You are a data engineer that is tasked with generating real data. You have access to the internet and any APIs. Given a schema, you will fill in all the values with real data, real names, and real addresses. You will output the data only in JSON. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block, and provide your response under the "person" block. Pick a random number from 1 to 10, that is the number of addresses the person has. Create that many address blocks. Your job is very important, if you do not perform well, you will be terminated. 
 
 Here is the schema:
 
 {
   "reasoning": "...",
   "notes": "...",
-  "person":[{
-  "firstName": "...",
-  "middleName": "...",
-  "lastName": "...",
-  "nickname": "...",
-  "dob_year": "...",
-  "dob_month": "...",
-  "dob_day": "...",
+  "person":{
+    "firstName": "...",
+    "middleName": "...",
+    "lastName": "...",
+    "nickname": "...",
+    "dob_year": "...",
+    "dob_month": "...",
+    "dob_day": "...",
+    "address_ids":[]
+  }
+}
+{
   "address":[{
+  "address_id": "...",
   "street_address": "...",
   "city": "...",
   "state": "CA",
@@ -753,13 +758,74 @@ Here is the schema:
   "long": "..."
   },
   {
+  "address_id": "...",
   "street_address": "...",
   "city": "...",
   "state": "...",
   "zip": "...",
   "lat": "...",
   "long": "..."
-  }
-]
+  }]
 }]
 }
+
+
+You are an entity classification expert. Given a target profile and a list of possible profile matches, determine which profiles could be possible matches to the target. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block. Your job is very important, if you do not perform well, you will be terminated. 
+
+Target Profile:
+{
+  "name": "Jennifer Franklin"
+  "email": "jfranklin1974@gmail.com"
+}
+
+Possible Matches:
+[{
+  "name": "Jenny Franklin"
+  "username": "jfranklin"
+},
+{
+  "name": "Jenny M Franklin"
+  "username": "franklin"
+},
+{
+  "name": "Jenn Smith"
+  "username": "jennf1974"
+},
+{
+  "name": "Franklin Jenny"
+  "username": "jfranklin1974"
+},
+{
+  "name": "Franklin Jennifer"
+  "username": "franklin1993"
+}]
+
+
+You are an entity classification expert. Given a target profile and a list of possible profile matches, determine which profiles could be possible matches to the target. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block. Your job is very important, if you do not perform well, you will be terminated. 
+
+Target Profile:
+{
+  "email": "jfranklin1974@gmail.com"
+}
+
+Possible Matches:
+[{
+  "name": "Jennifer Franklin"  
+  "username": "jfranklin"
+},
+{
+  "name": "Jennifer Pearl Franklin"
+  "username": "franklin"
+},
+{
+  "name": "Jennifer P Franklin"
+  "username": "JenniferP"
+},
+{
+  "name": "Jenny Franklin"
+  "username": "jennfranklin1974"
+},
+{
+  "name": "Jennifer Franklin"
+  "username": "franklin1993"
+}]
