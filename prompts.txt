@@ -806,26 +806,134 @@ You are an entity classification expert. Given a target profile and a list of po
 Target Profile:
 {
   "email": "jfranklin1974@gmail.com"
+  "year": 1974
 }
 
 Possible Matches:
 [{
+  "name": "James Franklin"
+  "username": "jamesfranklin1974"
+  "dob": 05171974
+},
+{
   "name": "Jennifer Franklin"  
   "username": "jfranklin"
+  "dob": 19740712
 },
 {
   "name": "Jennifer Pearl Franklin"
   "username": "franklin"
+  "dob": 05261974
 },
 {
   "name": "Jennifer P Franklin"
   "username": "JenniferP"
-},
-{
-  "name": "Jenny Franklin"
-  "username": "jennfranklin1974"
+  "dob": 05171974
 },
 {
   "name": "Jennifer Franklin"
   "username": "franklin1993"
+  "graduation" 1993
+  "dob": 1974
 }]
+
+You are an entity classification expert. Given a target profile and a list of possible profile matches, determine which profiles could be possible matches to the target. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block. Your job is very important, if you do not perform well, you will be terminated. 
+
+Target Profile:
+{
+  "email": "jfranklin1974@gmail.com"
+  "year": 1974
+}
+
+Possible Matches:
+[{
+  "name": "James Franklin"
+  "username": "jamesfranklin1974"
+  "dob": 05171974
+},
+{
+  "name": "Jennifer Franklin"  
+  "username": "jfranklin"
+  "dob": 19740712
+},
+{
+  "name": "Jennifer Pearl Franklin"
+  "username": "franklin"
+  "dob": 05261974
+},
+{
+  "name": "Jennifer P Franklin"
+  "username": "JenniferP"
+  "dob": 05171974
+},
+{
+  "name": "Jennifer Franklin"
+  "username": "franklin1993"
+  "graduation" 1993
+  "dob": 1974
+}]
+
+You are an entity classification expert. Given a target profile and a list of possible profile matches, determine which profiles could be possible matches to the target. Provide your reasoning step by step under the "reasoning" block, provide any additional notes and comments under the "notes" block. Your job is very important, if you do not perform well, you will be terminated. 
+
+Target Profile:
+{
+  "email": "jfranklin1974@gmail.com"
+  "year": 1974
+}
+
+Possible Matches:
+[{
+  "name": "James Franklin"
+  "username": "jamesfranklin1974"
+  "dob": 05171974
+},
+{
+  "name": "Jennifer Franklin"  
+  "username": "jfranklin"
+  "dob": 19740712
+},
+{
+  "name": "Jennifer Pearl Franklin"
+  "username": "franklin"
+  "dob": 05261974
+},
+{
+  "name": "Jennifer P Franklin"
+  "username": "JenniferP"
+  "dob": 05171974
+},
+{
+  "name": "Jennifer Franklin"
+  "username": "franklin1993"
+  "graduation" 1993
+  "dob": 1974
+}]
+
+You are an entity classification function, your inputs are two strings, and your output is a boolean. If the two inputs are possible matches, you will return true. If you do not perform your function well, we will roll back your source code.
+
+Here is an example
+String 1:
+{
+   ...
+}
+
+String 2:
+{
+  ...
+}
+Output: ...
+
+This is your input
+String 1:
+{
+  "jfranklin1974@gmail.com"
+}
+
+String 2:
+{
+  "Jennifer Franklin"  
+  "jfranklin"
+  19740712
+}
+
+Output: 
