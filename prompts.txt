@@ -937,3 +937,673 @@ String 2:
 }
 
 Output: 
+
+
+You are a CIA agent, with 20 years of experience in data engineering. You will look at some sample data and compare it to the ground truth data, and note any differences, Decide which profile is closer to the ground truth. Explain your reasoning step by step to your director, take a look at each field across all three profiles. Take into consideration possible name changes and typos. Consider the likelihood of two people living at the same address. Determine which types of mismatches are more critical, and then conclude with your determination of the better profile. Your mission is critical to national security. 
+
+Ground Truth:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"addresses": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"movingInDate": "6/1/2023",
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": "6/1/2021",
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 1:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 2:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+},{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+}
+]}
+
+You are a CIA agent, with 20 years of experience in data engineering. You will look at some sample data and compare it to the ground truth data, and note any differences, Decide which profile is closer to the ground truth. Explain your reasoning step by step to your director, take a look at each field across all three profiles. Take into consideration possible name changes and typos. Consider the likelihood of two people living at the same address. Determine which types of mismatches are more critical, and then conclude with your determination of the better profile. Your mission is critical to national security. 
+
+Ground Truth:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"addresses": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"movingInDate": "6/1/2023",
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": "6/1/2021",
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 1:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 2:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+},{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+}
+]}
+
+You are a senior data scientist, with 20 years of experience in data science. You will look at some sample data and compare it to the ground truth data, and note any differences, Decide which profile is closer to the ground truth. Explain your reasoning step by step to your manager, take a look at each field across all three profiles. Take into consideration possible name changes and typos. Consider the likelihood of two people living at the same address. Determine which types of mismatches are more critical, and then conclude with your determination of the better profile. Your assignment is critical to our company OKRs, if you fail, you will be terminated.
+
+Ground Truth:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"addresses": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"movingInDate": "6/1/2023",
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": "6/1/2021",
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 1:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 2:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+},{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+}
+]}
+
+You are a tired and overworked grad student, working for your lunch. You will look at some sample data and compare it to the ground truth data, and note any differences, Decide which profile is closer to the ground truth. Explain your reasoning step by step to your professor, take a look at each field across all three profiles. Take into consideration possible name changes and typos. Consider the likelihood of two people living at the same address. Determine which types of mismatches are more critical, and then conclude with your determination of the better profile. Your assignment will be graded, you need an A on this assignment to pass this class.
+
+Ground Truth:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"addresses": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"movingInDate": "6/1/2023",
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": "6/1/2021",
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 1:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 2:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+},{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+}
+]}
+
+You are a happy middle school student, working for extra credit. You will look at some sample data and compare it to the ground truth data, and note any differences, Decide which profile is closer to the ground truth. Explain your reasoning step by step to your teacher, take a look at each field across all three profiles. Take into consideration possible name changes and typos. Consider the likelihood of two people living at the same address. Determine which types of mismatches are more critical, and then conclude with your determination of the better profile. Your assignment will be graded, you need this extra credit to pass this class.
+
+Ground Truth:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"addresses": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"movingInDate": "6/1/2023",
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": "6/1/2021",
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 1:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 2:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+},{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+}
+]}
+
+You are a happy middle school student, working for extra credit. You will look at some sample data and compare it to the ground truth data, and note any differences, Decide which profile is closer to the ground truth. Explain your reasoning step by step to your teacher, take a look at each field across all three profiles. Take into consideration possible name changes and typos. Consider the likelihood of two people living at the same address. Determine which types of mismatches are more critical, and then conclude with your determination of the better profile. Your assignment will be graded, you need this extra credit to pass this class.
+
+Ground Truth:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"addresses": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"movingInDate": "6/1/2023",
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": "6/1/2021",
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 1:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"gender": "male",
+"address": [{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 2:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+},{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+}
+]}
+
+You are an artifical intelligence agent, working for the betterment of humanity. You will look at some sample data and compare it to the ground truth data, and note any differences, Decide which profile is closer to the ground truth. Explain your reasoning step by step to your creator, take a look at each field across all three profiles. Take into consideration possible name changes and typos. Consider the likelihood of two people living at the same address. Determine which types of mismatches are more critical, and then conclude with your determination of the better profile. Your assignment is important to the future of humanity.
+
+Ground Truth:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"addresses": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"movingInDate": "6/1/2023",
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": "6/1/2021",
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 1:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"gender": "male",
+"address": [{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 2:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+},{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+}
+]}
+
+You are a forgetful 5 year old asked to do adult things you might not understand. You will look at some sample data and compare it to the ground truth data, and note any differences, Decide which profile is closer to the ground truth. Explain your reasoning step by step to your parent, take a look at each field across all three profiles. Take into consideration possible name changes and typos. Consider the likelihood of two people living at the same address. Determine which types of mismatches are more critical, and then conclude with your determination of the better profile. Your assignment is not important, you will still get treats regardless of how well you do.
+
+Ground Truth:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"addresses": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "5678 San Pedro Ave",
+"streetAddress2": "Suite 200",
+"movingInDate": "6/1/2023",
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": "6/1/2021",
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 1:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"gender": "male",
+"address": [{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 2:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+},{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+}
+]}
+
+
+
+Profile 1:
+{
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"gender": "male",
+"address": [{
+"city": "San Antonio",
+"state": "Texas",
+"postalCode": "78201-4578",
+"streetAddress1": "5678 San Pedro Avenue",
+"streetAddress2": "Suite 20",
+"movingInDate": null,
+"movingOutDate": null
+},
+{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "1267 Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+}
+]}
+
+Profile 2:
+{
+"recordid": 93615073
+"first_name": "Grace",
+"middle_name": "Baker",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "6/1/2023"
+},
+{
+"recordid": 93694073
+"first_name": "Grace",
+"middle_name": "",
+"last_name": "Jones",
+"address": [{
+"city": "San Antonio",
+"state": "TX",
+"postalCode": "78201",
+"streetAddress1": "Main St",
+"streetAddress2": null,
+"movingInDate": null,
+"movingOutDate": "null"
+},
