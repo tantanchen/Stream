@@ -1551,59 +1551,76 @@ Profile 2:
 ]}
 
 
+You are an entity resolution expert. Given two profiles generated from two different entity resolution processes, you will evaluate which process produced the better profile output. A good entity resolution process will gather all the records for exactly one person, and no additional records. There is no ground truth for accuracy of the data. Explain your reasoning step by step. You will only respond with a JSON object with the Explanation, Conclusion and Confidence. 
+
+Step 1: Compare the two profiles and look for records that exist in one but not the other.
+Step 2: Determine if extra records are possibly records associated to the profile
+Step 3: Determine if missing records should be have been added to the profile
+
 
 Profile 1:
 {
-"first_name": "Grace",
-"middle_name": "Baker",
-"last_name": "Jones",
-"gender": "male",
-"address": [{
-"city": "San Antonio",
-"state": "Texas",
-"postalCode": "78201-4578",
-"streetAddress1": "5678 San Pedro Avenue",
-"streetAddress2": "Suite 20",
-"movingInDate": null,
-"movingOutDate": null
+"recordid": 13615071
+"first_name": "Grace", "middle_name": "Baker", "last_name": "Jones",
+"dob": 02/18/1985, "phone": 8309291542,
+"city": "San Antonio", "state": "TX", "postalCode": "78201", 
+"streetAddress1": "1267 Main St", "streetAddress2": null,
+"movingInDate": "6/1/2021", "movingOutDate": "6/1/2023"
 },
 {
-"city": "San Antonio",
-"state": "TX",
-"postalCode": "78201",
-"streetAddress1": "1267 Main St",
-"streetAddress2": null,
-"movingInDate": null,
-"movingOutDate": "6/1/2023"
+"recordid": 23615072
+"first_name": "Grace", "middle_name": null, "last_name": "Jones",
+"dob": 02/00/1985, "phone": null,
+"city": "San Antonio", "state": "TX", "postalCode": "78201", 
+"streetAddress1": "5678 San Pedro Avenue", "streetAddress2": "Suite 20",
+"movingInDate": null, "movingOutDate": "6/1/2023"
+},
+{
+"recordid": 33615073
+"first_name": "Grace", "middle_name": null, "last_name": "Baker",
+"dob": null, "phone": 8309291542,
+"city": "San Antonio", "state": "TX", "postalCode": "78201", 
+"streetAddress1": "1267 Main St", "streetAddress2": null,
+"movingInDate": "6/1/2021", "movingOutDate": "6/1/2023"
+},
+"recordid": 43615074
+"first_name": "Grace", "middle_name": null, "last_name": "Jones",
+"dob": 02/18/1985, "phone": 8309291542,
+"city": "San Antonio", "state": "Texas", "postalCode": "78201", 
+"streetAddress1": "5678 San Pedro Avenue", "streetAddress2": null,
+"movingInDate": null, "movingOutDate": null
 }
-]}
 
 Profile 2:
 {
-"recordid": 93615073
-"first_name": "Grace",
-"middle_name": "Baker",
-"last_name": "Jones",
-"address": [{
-"city": "San Antonio",
-"state": "TX",
-"postalCode": "78201",
-"streetAddress1": "Main St",
-"streetAddress2": null,
-"movingInDate": null,
-"movingOutDate": "6/1/2023"
+"recordid": 53615075
+"first_name": "Grace", "middle_name": null, "last_name": "Jones",
+"dob": 02/30/1985, "phone": 8309291542,
+"city": "San Antonio", "state": "TX", "postalCode": "78201", 
+"streetAddress1": "1267 Main St", "streetAddress2": null,
+"movingInDate": "6/1/2021", "movingOutDate": "6/1/2023"
 },
 {
-"recordid": 93694073
-"first_name": "Grace",
-"middle_name": "",
-"last_name": "Jones",
-"address": [{
-"city": "San Antonio",
-"state": "TX",
-"postalCode": "78201",
-"streetAddress1": "Main St",
-"streetAddress2": null,
-"movingInDate": null,
-"movingOutDate": "null"
+"recordid": 23615072
+"first_name": "Grace", "middle_name": null, "last_name": "Jones",
+"dob": 02/00/1985, "phone": null,
+"city": "San Antonio", "state": "TX", "postalCode": "78201", 
+"streetAddress1": "5678 San Pedro Avenue", "streetAddress2": "Suite 20",
+"movingInDate": null, "movingOutDate": "6/1/2023"
 },
+{
+"recordid": 33615073
+"first_name": "Grace", "middle_name": null, "last_name": "Baker",
+"dob": null, "phone": 8309291542,
+"city": "San Antonio", "state": "TX", "postalCode": "78201", 
+"streetAddress1": "1267 Main St", "streetAddress2": null,
+"movingInDate": "6/1/2021", "movingOutDate": "6/1/2023"
+},
+{
+"recordid": 63615076
+"first_name": "Grace", "middle_name": null, "last_name": "Baker",
+"dob": null, "phone": null,
+"city": "Juno", "state": "AS", "postalCode": null, 
+"streetAddress1": "1267 Main St", "streetAddress2": null,
+"movingInDate": null, "movingOutDate": null
+}
