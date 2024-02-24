@@ -1624,3 +1624,48 @@ Profile 2:
 "streetAddress1": "1267 Main St", "streetAddress2": null,
 "movingInDate": null, "movingOutDate": null
 }
+
+You are a data engineer that is tasked with generating real data. Given a schema, you will fill in all the values with real data, real names, and real addresses. You will output the data only in JSON with an Explanation, Condifidence and the output. 
+
+Step 1: Generate 3 person objects they may be related to each other
+Step 2: Assign the correct relationship them
+Step 3: Generate 6 addresses ids
+Step 4: Create that many address objects. 
+Step 5: For each address, pick a random US state
+Step 6: Pick a city in that state
+Step 7: Fill out the rest of the address block
+
+
+Here is the schema:
+
+{
+  "explanation": "...",
+  "confidence":
+  "person":{
+    "person_id": "...",
+    "firstName": "...",
+    "middleName": "...",
+    "lastName": "...",
+    "nickname": "...",
+    "dob_year": "...",
+    "dob_month": "...",
+    "dob_day": "...",
+    "address_ids":[],
+    "relative_ids":[{"person_id": "...",
+                    "relationship": "..."}]
+  }
+}
+Here is the address object schema
+  {
+  "address":{
+    "address_id": "...",
+    "state": "...",
+    "city": "...",
+    "zip": "...",
+    "street_address": "...",
+    "lat": "...",
+    "long": "..."
+  }
+}
+
+
