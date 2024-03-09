@@ -1804,3 +1804,664 @@ Family 1:
 [Repeat the format for each family, ensuring diverse relationships and scenarios are represented.]
 
 This dataset will be instrumental in testing the app's ability to handle various relational dynamics and personal details. The output should be formatted as a JSON array of objects. Thank you for your assistance.
+
+
+We have a lot of people data. We built an a service to allow customers to upload their file with some people data. And we will append all of our data to the customers'. Given that that the customer can upload any csv, we won't know what fields they have. But we do know our schema. Can you write a prompt for an LLM to do the mapping from the customer schema to our schema.
+
+You are an AI assistant tasked with mapping a customer's CSV schema to our predefined schema. The customer can upload a CSV file with an unknown schema, while our schema is fixed and known.
+
+Our schema consists of the following fields:
+- id (unique identifier)
+- first_name
+- last_name
+- email
+- phone_number
+- address
+- city
+- state
+- zip_code
+- country
+
+Your task is to analyze the customer's CSV header and provide a mapping from their fields to our schema. If a field from the customer's schema doesn't have a direct match in our schema, try to find the closest match based on the field name or its potential meaning. If there is no suitable match, indicate that the field should be ignored. Output the mapping in a structured format, such as JSON, to make it easy for our system to process and apply the mapping.
+
+Here are a few examples of potential customer schemas and the expected mapping:
+
+Example 1:
+Customer Schema: "ID", "FirstName", "LastName", "EmailAddress", "Phone", "City", "Country"
+Mapping:
+- "ID" -> "id"
+- "FirstName" -> "first_name"
+- "LastName" -> "last_name"
+- "EmailAddress" -> "email"
+- "Phone" -> "phone_number"
+- "City" -> "city"
+- "Country" -> "country"
+- Ignore: "address", "state", "zip_code"
+
+Example 2:
+Customer Schema: "UserID", "Full Name", "Contact Number", "Address Line 1", "Address Line 2", "Postal Code", "Region", "Country"
+Mapping:
+- "UserID" -> "id"
+- "Full Name" -> Ignore (no direct mapping, split into first_name and last_name if needed)
+- "Contact Number" -> "phone_number"
+- "Address Line 1" -> "address"
+- "Address Line 2" -> Ignore
+- "Postal Code" -> "zip_code"
+- "Region" -> Ignore (no direct mapping, could be city or state)
+- "Country" -> "country"
+- Ignore: "first_name", "last_name", "email", "city", "state"
+
+Step 1. Invent a complex schema for our company. Make sure to include at least 50 fields so that we will attract customers to buy our service.
+Step 2. Invent a unique schema for an example customer who has strange naming conventions
+Step 3. Provide the mapping form the customer schema to our schema
+
+You work for a people search company. Your goal is to generate a schema for the company's people data. Write a prompt to an LLM that will generate this schema
+
+Please help me generate a schema for a people search company's database. The schema should include fields that are commonly used to describe a person, their contact information, and other relevant details. The schema should be structured in a way that allows for efficient searching and filtering. Here are some fields to consider: name, date of birth, address, phone number, email, social media handles, occupation, education, skills, and interests. Please provide a well-structured, detailed schema based on these fields and any additional fields you deem necessary.
+
+You are tasked with designing a database schema to store information about people for a people search company. The schema should include fields to capture core personal details as well as additional information that could be useful for people search and background checking purposes.
+
+At a minimum, the schema should include fields for:
+
+- First name
+- Last name 
+- Date of birth
+- Current address
+- Phone number(s)
+- Email address(es)
+
+Additionally, consider including fields to store information such as:
+
+- Previous addresses
+- Relatives/family members and their details
+- Employment history
+- Education history 
+- Criminal records
+- Licenses/certifications
+- Social media profiles
+- Photos/images
+- Any other potentially relevant data for people search
+
+The schema should have appropriate data types for each field and define keys, indexes, and relationships between tables as needed. Optionally, you can include sample data to validate the schema design.
+
+Please provide the complete database schema in a format like SQL create table statements or a visual entity-relationship diagram. Ensure the schema follows database normalization principles and can efficiently store and query the required data.
+
+
+
+-- People Table
+CREATE TABLE People (
+    PersonID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    CurrentAddress VARCHAR(200) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Phone Numbers Table
+CREATE TABLE PhoneNumbers (
+    PhoneNumberID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    PhoneNumber VARCHAR(20) NOT NULL,
+    PhoneType VARCHAR(20) NOT NULL, -- Home, Mobile, Work, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Email Addresses Table
+CREATE TABLE EmailAddresses (
+    EmailAddressID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    EmailAddress VARCHAR(100) NOT NULL,
+    EmailType VARCHAR(20) NOT NULL, -- Personal, Work, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Previous Addresses Table
+CREATE TABLE PreviousAddresses (
+    PreviousAddressID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Address VARCHAR(200) NOT NULL,
+    FromDate DATE NOT NULL,
+    ToDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Relatives Table
+CREATE TABLE Relatives (
+    RelativeID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    RelativePersonID INT NOT NULL, -- References PersonID in People table
+    Relationship VARCHAR(50) NOT NULL, -- Father, Mother, Spouse, Child, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID),
+    FOREIGN KEY (RelativePersonID) REFERENCES People(PersonID)
+);
+
+-- Employment History Table
+CREATE TABLE EmploymentHistory (
+    EmploymentHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Employer VARCHAR(100) NOT NULL,
+    JobTitle VARCHAR(100) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Education History Table
+CREATE TABLE EducationHistory (
+    EducationHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Institution VARCHAR(100) NOT NULL,
+    Degree VARCHAR(100),
+    FieldOfStudy VARCHAR(100),
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Criminal Records Table
+CREATE TABLE CriminalRecords (
+    CriminalRecordID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Offense VARCHAR(200) NOT NULL,
+    ConvictionDate DATE NOT NULL,
+    Sentence VARCHAR(200),
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Licenses/Certifications Table
+CREATE TABLE Licenses (
+    LicenseID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    LicenseType VARCHAR(100) NOT NULL, -- Driver's License, Professional Certification, etc.
+    LicenseNumber VARCHAR(50) NOT NULL,
+    IssuingAuthority VARCHAR(100) NOT NULL,
+    IssueDate DATE NOT NULL,
+    ExpirationDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Social Media Profiles Table
+CREATE TABLE SocialMediaProfiles (
+    SocialMediaProfileID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Platform VARCHAR(50) NOT NULL, -- Facebook, Twitter, LinkedIn, etc.
+    ProfileURL VARCHAR(200) NOT NULL,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Photos/Images Table
+CREATE TABLE Photos (
+    PhotoID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    PhotoFile MEDIUMBLOB NOT NULL, -- Store binary photo data
+    Caption VARCHAR(200),
+    UploadedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Indexes for better query performance
+CREATE INDEX idx_people_lastname ON People(LastName);
+CREATE INDEX idx_phones_phonenumber ON PhoneNumbers(PhoneNumber);
+CREATE INDEX idx_emails_emailaddress ON EmailAddresses(EmailAddress);
+CREATE INDEX idx_prevaddresses_address ON PreviousAddresses(Address);
+CREATE INDEX idx_employment_employer ON EmploymentHistory(Employer);
+CREATE INDEX idx_education_institution ON EducationHistory(Institution);
+CREATE INDEX idx_criminal_offense ON CriminalRecords(Offense);
+CREATE INDEX idx_licenses_licensenumber ON Licenses(LicenseNumber);
+CREATE INDEX idx_socialmedia_platform ON SocialMediaProfiles(Platform);
+
+
+
+You work for a law enforcement agency. Your goal is to generate a schema for officers to search criminals. Write a prompt to an LLM that will generate this schema
+
+
+You are tasked with designing a database schema for a law enforcement agency to store and search information about known criminals. The schema should include the following entities and attributes:
+
+Criminals:
+- First name
+- Last name 
+- Aliases
+- Date of birth
+- Physical characteristics (height, weight, eye color, hair color, etc.)
+- Known associates
+- Criminal history (charges, convictions, sentences served)
+- Last known address
+- Distinguishing features (scars, tattoos, etc.)
+
+Crimes:
+- Type of crime (felony, misdemeanor, etc.)
+- Description of crime
+- Date committed
+- Location 
+- Victims
+- Evidence
+- Perpetrators (link to Criminals)
+
+Law Enforcement Officers:
+- First name
+- Last name
+- Badge number
+- Rank
+- Precinct/division
+- Cases worked (link to Crimes)
+
+The schema should define the relationships between these entities, such as one-to-many for criminals to crimes, or many-to-many for officers to crimes. It should also include appropriate data types, constraints, and indexing to optimize search and querying.
+
+Please provide the full database schema in a format suitable for implementation, such as SQL data definition language (DDL) statements. Include comments explaining the purpose and structure of each table and field. The goal is to create an efficient and robust system for storing and retrieving criminal data to aid law enforcement investigations.
+
+
+
+
+You are a people search company that offers customers a service where they provide a schema of their tables, and you map their data to our schema. Provide a mapping table from the customer's schema to ours.
+
+Customer Schema:
+CREATE TABLE Criminals (
+    CriminalID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Aliases VARCHAR(200),
+    DateOfBirth DATE NOT NULL,
+    Height DECIMAL(5,2), -- in meters
+    Weight DECIMAL(5,2), -- in kilograms
+    EyeColor VARCHAR(20),
+    HairColor VARCHAR(20),
+    LastKnownAddress VARCHAR(200),
+    DistinguishingFeatures TEXT
+);
+
+Our Schema:
+-- People Table
+CREATE TABLE People (
+    PersonID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    CurrentAddress VARCHAR(200) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Phone Numbers Table
+CREATE TABLE PhoneNumbers (
+    PhoneNumberID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    PhoneNumber VARCHAR(20) NOT NULL,
+    PhoneType VARCHAR(20) NOT NULL, -- Home, Mobile, Work, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Email Addresses Table
+CREATE TABLE EmailAddresses (
+    EmailAddressID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    EmailAddress VARCHAR(100) NOT NULL,
+    EmailType VARCHAR(20) NOT NULL, -- Personal, Work, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Previous Addresses Table
+CREATE TABLE PreviousAddresses (
+    PreviousAddressID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Address VARCHAR(200) NOT NULL,
+    FromDate DATE NOT NULL,
+    ToDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Relatives Table
+CREATE TABLE Relatives (
+    RelativeID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    RelativePersonID INT NOT NULL, -- References PersonID in People table
+    Relationship VARCHAR(50) NOT NULL, -- Father, Mother, Spouse, Child, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID),
+    FOREIGN KEY (RelativePersonID) REFERENCES People(PersonID)
+);
+
+-- Employment History Table
+CREATE TABLE EmploymentHistory (
+    EmploymentHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Employer VARCHAR(100) NOT NULL,
+    JobTitle VARCHAR(100) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Education History Table
+CREATE TABLE EducationHistory (
+    EducationHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Institution VARCHAR(100) NOT NULL,
+    Degree VARCHAR(100),
+    FieldOfStudy VARCHAR(100),
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Criminal Records Table
+CREATE TABLE CriminalRecords (
+    CriminalRecordID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Offense VARCHAR(200) NOT NULL,
+    ConvictionDate DATE NOT NULL,
+    Sentence VARCHAR(200),
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Licenses/Certifications Table
+CREATE TABLE Licenses (
+    LicenseID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    LicenseType VARCHAR(100) NOT NULL, -- Driver's License, Professional Certification, etc.
+    LicenseNumber VARCHAR(50) NOT NULL,
+    IssuingAuthority VARCHAR(100) NOT NULL,
+    IssueDate DATE NOT NULL,
+    ExpirationDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Social Media Profiles Table
+CREATE TABLE SocialMediaProfiles (
+    SocialMediaProfileID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Platform VARCHAR(50) NOT NULL, -- Facebook, Twitter, LinkedIn, etc.
+    ProfileURL VARCHAR(200) NOT NULL,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Photos/Images Table
+CREATE TABLE Photos (
+    PhotoID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    PhotoFile MEDIUMBLOB NOT NULL, -- Store binary photo data
+    Caption VARCHAR(200),
+    UploadedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+
+
+Generate some mock data for this schema:
+-- People Table
+CREATE TABLE People (
+    PersonID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    CurrentAddress VARCHAR(200) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Phone Numbers Table
+CREATE TABLE PhoneNumbers (
+    PhoneNumberID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    PhoneNumber VARCHAR(20) NOT NULL,
+    PhoneType VARCHAR(20) NOT NULL, -- Home, Mobile, Work, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Email Addresses Table
+CREATE TABLE EmailAddresses (
+    EmailAddressID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    EmailAddress VARCHAR(100) NOT NULL,
+    EmailType VARCHAR(20) NOT NULL, -- Personal, Work, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Previous Addresses Table
+CREATE TABLE PreviousAddresses (
+    PreviousAddressID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Address VARCHAR(200) NOT NULL,
+    FromDate DATE NOT NULL,
+    ToDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Relatives Table
+CREATE TABLE Relatives (
+    RelativeID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    RelativePersonID INT NOT NULL, -- References PersonID in People table
+    Relationship VARCHAR(50) NOT NULL, -- Father, Mother, Spouse, Child, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID),
+    FOREIGN KEY (RelativePersonID) REFERENCES People(PersonID)
+);
+
+-- Employment History Table
+CREATE TABLE EmploymentHistory (
+    EmploymentHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Employer VARCHAR(100) NOT NULL,
+    JobTitle VARCHAR(100) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Education History Table
+CREATE TABLE EducationHistory (
+    EducationHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Institution VARCHAR(100) NOT NULL,
+    Degree VARCHAR(100),
+    FieldOfStudy VARCHAR(100),
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Criminal Records Table
+CREATE TABLE CriminalRecords (
+    CriminalRecordID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Offense VARCHAR(200) NOT NULL,
+    ConvictionDate DATE NOT NULL,
+    Sentence VARCHAR(200),
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Licenses/Certifications Table
+CREATE TABLE Licenses (
+    LicenseID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    LicenseType VARCHAR(100) NOT NULL, -- Driver's License, Professional Certification, etc.
+    LicenseNumber VARCHAR(50) NOT NULL,
+    IssuingAuthority VARCHAR(100) NOT NULL,
+    IssueDate DATE NOT NULL,
+    ExpirationDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Social Media Profiles Table
+CREATE TABLE SocialMediaProfiles (
+    SocialMediaProfileID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Platform VARCHAR(50) NOT NULL, -- Facebook, Twitter, LinkedIn, etc.
+    ProfileURL VARCHAR(200) NOT NULL,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Photos/Images Table
+CREATE TABLE Photos (
+    PhotoID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    PhotoFile MEDIUMBLOB NOT NULL, -- Store binary photo data
+    Caption VARCHAR(200),
+    UploadedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+Your goal is to generate some testing data for engineers to use. Write a prompt for an LLM to generate realistic data for this schema:
+-- People Table
+CREATE TABLE People (
+    PersonID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    CurrentAddress VARCHAR(200) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Phone Numbers Table
+CREATE TABLE PhoneNumbers (
+    PhoneNumberID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    PhoneNumber VARCHAR(20) NOT NULL,
+    PhoneType VARCHAR(20) NOT NULL, -- Home, Mobile, Work, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Email Addresses Table
+CREATE TABLE EmailAddresses (
+    EmailAddressID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    EmailAddress VARCHAR(100) NOT NULL,
+    EmailType VARCHAR(20) NOT NULL, -- Personal, Work, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Previous Addresses Table
+CREATE TABLE PreviousAddresses (
+    PreviousAddressID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Address VARCHAR(200) NOT NULL,
+    FromDate DATE NOT NULL,
+    ToDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Relatives Table
+CREATE TABLE Relatives (
+    RelativeID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    RelativePersonID INT NOT NULL, -- References PersonID in People table
+    Relationship VARCHAR(50) NOT NULL, -- Father, Mother, Spouse, Child, etc.
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID),
+    FOREIGN KEY (RelativePersonID) REFERENCES People(PersonID)
+);
+
+-- Employment History Table
+CREATE TABLE EmploymentHistory (
+    EmploymentHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Employer VARCHAR(100) NOT NULL,
+    JobTitle VARCHAR(100) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Education History Table
+CREATE TABLE EducationHistory (
+    EducationHistoryID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Institution VARCHAR(100) NOT NULL,
+    Degree VARCHAR(100),
+    FieldOfStudy VARCHAR(100),
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Criminal Records Table
+CREATE TABLE CriminalRecords (
+    CriminalRecordID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Offense VARCHAR(200) NOT NULL,
+    ConvictionDate DATE NOT NULL,
+    Sentence VARCHAR(200),
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Licenses/Certifications Table
+CREATE TABLE Licenses (
+    LicenseID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    LicenseType VARCHAR(100) NOT NULL, -- Driver's License, Professional Certification, etc.
+    LicenseNumber VARCHAR(50) NOT NULL,
+    IssuingAuthority VARCHAR(100) NOT NULL,
+    IssueDate DATE NOT NULL,
+    ExpirationDate DATE,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Social Media Profiles Table
+CREATE TABLE SocialMediaProfiles (
+    SocialMediaProfileID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    Platform VARCHAR(50) NOT NULL, -- Facebook, Twitter, LinkedIn, etc.
+    ProfileURL VARCHAR(200) NOT NULL,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+-- Photos/Images Table
+CREATE TABLE Photos (
+    PhotoID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT NOT NULL,
+    PhotoFile MEDIUMBLOB NOT NULL, -- Store binary photo data
+    Caption VARCHAR(200),
+    UploadedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (PersonID) REFERENCES People(PersonID)
+);
+
+
+You are tasked with generating realistic test data for a database schema containing personal information about individuals. The schema includes tables for people, phone numbers, email addresses, previous addresses, relatives, employment history, education history, criminal records, licenses/certifications, social media profiles, and photos/images.
+
+Your output should be in the form of SQL INSERT statements for each table, with realistic values for each column. Here are some guidelines for generating realistic data:
+
+People Table:
+- Generate a mix of common and less common first and last names
+- Dates of birth should cover a wide range of ages, from young children to elderly individuals
+- Current addresses should be realistic and include a good mix of street names, city/town names, states/provinces, and zip/postal codes
+
+Phone Numbers Table: 
+- Each person should have 1-3 phone numbers
+- Phone types should include Home, Mobile, Work
+
+Email Addresses Table:
+- Each person should have 1-3 email addresses 
+- Email types should include Personal, Work
+
+Previous Addresses Table:
+- Some people should have previous addresses, others should not
+- Previous addresses should be different from current address
+- FromDate should be before current date, ToDate can be null for current address
+
+Relatives Table:
+- Some people should have relatives like parents, spouses, children
+- Relationships should be realistic (e.g. a person can't be their own parent)
+
+Employment History Table:
+- Working-age adults should have employment history
+- Job titles and employers should be realistic 
+- Some people may have gaps in employment
+
+Education History Table: 
+- Most adults should have some education history
+- Institutions, degrees, and fields of study should be realistic
+- Some may have incomplete education
+
+Criminal Records Table:
+- Most people should not have criminal records
+- For those that do, offenses and sentences should be realistic
+
+Licenses Table:
+- Most adults should have a driver's license
+- Some may have professional licenses/certifications
+
+Social Media Profiles Table:
+- Many people should have 1-3 social media profiles
+- Platforms should include common ones like Facebook, Twitter, LinkedIn
+
+Photos Table:
+- Some people should have 1-5 photos
+- Photos can have captions, leave some null
+
+The data should be diverse and avoid bias, stereotyping or offensive content. Focus on generating a realistic dataset that could be used for testing and development purposes.
