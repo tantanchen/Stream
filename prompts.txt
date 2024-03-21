@@ -2465,3 +2465,45 @@ Photos Table:
 - Photos can have captions, leave some null
 
 The data should be diverse and avoid bias, stereotyping or offensive content. Focus on generating a realistic dataset that could be used for testing and development purposes.
+
+
+Your goal is to write a prompt for an LLM to compare two outputs from two different entity resolution processes and output which is better. A person profile is created from multiple records that should represent the same person. Each record will have slightly different variations and possibly incorrect data. In your prompt, make sure to generate example records for both profiles.
+
+profile format:
+[
+ {record_id:
+  ...},
+ {record_id:
+  ...}
+]
+
+
+
+Consider the following two profiles, each created from multiple records by different entity resolution processes. Your task is to compare these outputs and determine which one is more accurate and reliable, considering the consistency, completeness, and correctness of the data.
+
+
+Please analyze the data in these profiles and provide a reasoned response as to which one you believe is better and why.
+
+
+Profile 1:
+[
+{record_id: 1, name: 'Jane A. Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.smith@work.com', dob: '1980-05-15', ssn: '123-45-6789', gender: 'Female', marital_status: 'Single', employment: 'Software Engineer'},
+{record_id: 2, name: 'Jane Smith', address: '456 Oak Road, Cityville, CA 12345', phone: '555-012-3456', email: 'jsmith@personal.net', dob: '05/15/1980', ssn: '123-45-6789', gender: 'Female', marital_status: 'Single', employment: 'Engineer'},
+{record_id: 3, name: 'J.A. Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.a.smith@work.com', dob: '1980-05-15', ssn: '123-45-6789', gender: 'F', marital_status: 'Single', employment: 'Software Engineer'},
+{record_id: 4, name: 'Jane Smith', address: '456 Oak Road, Cityville, California 12345', phone: '555-012-3456', email: 'janesmith@personal.net', dob: '15/05/1980', ssn: '123456789', gender: 'Female', marital_status: 'Single', employment: 'Engineer'},
+{record_id: 5, name: 'Jane A Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.smith@personal.net', dob: '1980-05-15', ssn: '123-45-6789', gender: 'Female', marital_status: 'Single', employment: 'Software Engineer'},
+{record_id: 6, name: 'Jane Smith', address: '123 Maple St., Cityville, CA 12345', phone: '555-098-7654', email: 'jsmith@example.org', dob: '1980-05-15', ssn: '123-45-6789', gender: 'Female', marital_status: 'Married', employment: 'Software Developer'},
+{record_id: 7, name: 'Jane A. Smith', address: '789 Pine Ave., Cityville, CA 12345', phone: '555-246-8101', email: 'jane.smith@personal.com', dob: '05/15/1980', ssn: '123-45-6789', gender: 'Female', marital_status: 'Single', employment: 'Engineer'},
+{record_id: 8, name: 'J. Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'smith.jane@work.net', dob: '1980-05-15', ssn: '123-45-6789', gender: 'F', marital_status: 'Single', employment: 'Software Engineer'}
+]
+
+Profile 2:
+[
+{record_id: 1, name: 'Jane A. Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.smith@work.com', dob: '1980-05-15', ssn: '123-45-6789', occupation: 'engineer', gender: 'female', marital_status: 'married'},
+{record_id: 2, name: 'Jane Smith', address: '456 Oak Road, Cityville, CA 12345', phone: '555-012-3456', email: 'jsmith@personal.net', dob: '05/15/1980', ssn: '123-45-6789', occupation: 'software engineer', gender: 'female', marital_status: 'married'},
+{record_id: 3, name: 'J.A. Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.a.smith@work.com', dob: '1980-05-15', ssn: '123-45-6789', occupation: 'engineer', gender: 'female', marital_status: 'married'},
+{record_id: 4, name: 'Jane Smith', address: '456 Oak Road, Cityville, California 12345', phone: '555-012-3456', email: 'janesmith@personal.net', dob: '15/05/1980', ssn: '123456789', occupation: 'software engineer', gender: 'female', marital_status: 'married'},
+{record_id: 5, name: 'Jane A Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.smith@personal.net', dob: '1980-05-15', ssn: '123-45-6789', occupation: 'engineer', gender: 'female', marital_status: 'married'},
+{record_id: 6, name: 'Jane A. Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.smith@work.com', dob: '1980-05-15', ssn: '123-45-6789', occupation: 'software engineer', gender: 'female', marital_status: 'married'},
+{record_id: 7, name: 'J. Smith', address: '456 Oak Road, Cityville, CA 12345', phone: '555-012-3456', email: 'jane.smith@work.com', dob: '05/15/1980', ssn: '123-45-6789', occupation: 'engineer', gender: 'female', marital_status: 'married'}
+]
