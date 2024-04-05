@@ -2557,4 +2557,48 @@ Here is a profile with 8 records. Generate another profile also with 8 records i
 
 
 
+You are an entity resolution expert. Given two profiles generated from two different entity resolution processes, you will evaluate which process produced the better profile output. A good entity resolution process will gather all the records for exactly one person, and no additional records. There is no ground truth for accuracy of the data. Explain your reasoning step by step. You will only respond with a JSON object with the Explanation, Conclusion and Confidence. 
 
+Step 1: Compare the two profiles and look for records that exist in one but not the other.
+Step 2: Determine if extra records are possibly records associated to the profile
+Step 3: Determine if missing records should be have been added to the profile
+
+Profile 1:
+[
+{record_id: 1, name: 'John D. Doe', address: '79 Elm St., Springfield, IL 62704', phone: '555-765-4321', email: 'john.doe@work.com', dob: '1978-11-24', ssn: '987-65-4321', gender: 'Male', marital_status: 'Married', employment: 'Actress'},
+{record_id: 3, name: 'J.D. Doe', address: '79 Elm St., Springfield, IL 62704', phone: '555-765-4321', email: 'john.d.doe@work.com', dob: '1978-11-24', ssn: '987-65-4321', gender: 'M', marital_status: 'Married', employment: 'Actress'},
+{record_id: 4, name: 'John Doe', address: '79 Elm Street, Springfield, Illinois 62704', phone: '555-765-4321', email: 'johndoe@personal.net', dob: '24/11/1978', ssn: '987654321', gender: 'Male', marital_status: 'Married', employment: 'Actress'},
+{record_id: 5, name: 'John D Doe', address: '79 Elm St., Springfield, IL 62704', phone: '555-765-4321', email: 'john.doe@personal.net', dob: '1978-11-24', ssn: '987-65-4321', gender: 'Male', marital_status: 'Married', employment: 'Actress'},
+{record_id: 6, name: 'John Doe', address: '13 Maple Ave., Springfield, IL 62704', phone: '555-321-7654', email: 'jdoe@example.org', dob: '1978-11-24', ssn: '987-65-4321', gender: 'Male', marital_status: 'Single', employment: 'Stage Actress'},
+{record_id: 8, name: 'J. Doe', address: '79 Elm St., Springfield, IL 62704', phone: '555-765-4321', email: 'doe.john@work.net', dob: '1978-11-24', ssn: '987-65-4321', gender: 'M', marital_status: 'Married', employment: 'Movie Actress'}
+]
+
+Profile 2:
+[
+{record_id: 1, name: 'John D. Doe', address: '79 Elm St., Springfield, IL 62704', phone: '555-765-4321', email: 'john.doe@work.com', dob: '1978-11-24', ssn: '987-65-4321', gender: 'Male', marital_status: 'Married', employment: 'Actress'},
+{record_id: 2, name: 'John Doe', address: '79 Elm Street, Springfield, IL 62704', phone: '555-765-4321', email: 'jdoe@personal.net', dob: '11/24/1978', ssn: '987-65-4321', gender: 'Male', marital_status: 'Married', employment: 'Actress'},
+{record_id: 4, name: 'John Doe', address: '79 Elm Street, Springfield, Illinois 62704', phone: '555-765-4321', email: 'johndoe@personal.net', dob: '24/11/1978', ssn: '987654321', gender: 'Male', marital_status: 'Married', employment: 'Actress'},
+{record_id: 5, name: 'John D Doe', address: '79 Elm St., Springfield, IL 62704', phone: '555-765-4321', email: 'john.doe@personal.net', dob: '1978-11-24', ssn: '987-65-4321', gender: 'Male', marital_status: 'Married', employment: 'Actress'},
+{record_id: 7, name: 'John D. Doe', address: '64 Pine Ln., Springfield, IL 62704', phone: '555-654-9876', email: 'john.doe@personal.com', dob: '11/24/1978', ssn: '987-65-4321', gender: 'Male', marital_status: 'Married', employment: 'Actress'},
+{record_id: 8, name: 'J. Doe', address: '79 Elm St., Springfield, IL 62704', phone: '555-765-4321', email: 'doe.john@work.net', dob: '1978-11-24', ssn: '987-65-4321', gender: 'M', marital_status: 'Married', employment: 'Movie Actress'}
+]
+
+{
+  "Explanation": "Profile 1 contains 6 records, while Profile 2 contains 6 records as well. However, Profile 2 has a record (record_id: 7) that is not present in Profile 1, and Profile 1 has a record (record_id: 6) that is not present in Profile 2. The record with record_id: 6 in Profile 1 has a different address ('13 Maple Ave., Springfield, IL 62704') and email ('jdoe@example.org') compared to the other records, suggesting it may belong to a different person. The record with record_id: 7 in Profile 2 has a different address ('64 Pine Ln., Springfield, IL 62704') and email ('john.doe@personal.com') compared to the other records, but the other attributes match the records in both profiles, suggesting it may belong to the same person. Additionally, Profile 2 is missing the record with record_id: 3 from Profile 1, which appears to be a duplicate of the record with record_id: 1 with minor variations in the name and email fields.",
+  "Conclusion": "Based on the analysis, Profile 2 appears to be a better representation of the entity, as it includes a potentially valid record (record_id: 7) that is not present in Profile 1, and does not include the potentially invalid record (record_id: 6) that is present in Profile 1. However, Profile 1 includes a duplicate record (record_id: 3) that is not present in Profile 2, which could be considered a drawback.",
+  "Confidence": 4
+}
+
+
+Here is some real data, please generate some mock data that is fake but looks real and has the same variations.
+
+[
+{record_id: 1, name: 'Jane A. Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.smith@work.com', dob: '1980-05-15', ssn: '123-45-6789', occupation: 'engineer', gender: 'female', marital_status: 'married'},
+{record_id: 2, name: 'Jane Smith', address: '456 Oak Road, Cityville, CA 12345', phone: '555-012-3456', email: 'jsmith@personal.net', dob: '05/15/1980', ssn: '123-45-6789', occupation: 'software engineer', gender: 'female', marital_status: 'married'},
+{record_id: 3, name: 'J.A. Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.a.smith@work.com', dob: '1980-05-15', ssn: '123-45-6789', occupation: 'engineer', gender: 'female', marital_status: 'married'},
+{record_id: 4, name: 'J.A. Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jean.a.smith@comcast.com', dob: '1954-05-15', ssn: '123-45-6789', occupation: 'programming wizard', gender: 'female', marital_status: 'married'},
+{record_id: 5, name: 'Jane Smith', address: '456 Oak Road, Cityville, California 12345', phone: '555-012-3456', email: 'janesmith@personal.net', dob: '15/05/1980', ssn: '123456789', occupation: 'software engineer', gender: 'female', marital_status: 'married'},
+{record_id: 6, name: 'Jane A Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.smith@personal.net', dob: '1980-05-15', ssn: '123-45-6789', occupation: 'engineer', gender: 'female', marital_status: 'married'},
+{record_id: 7, name: 'Jane A. Smith', address: '456 Oak Rd., Cityville, CA 12345', phone: '555-012-3456', email: 'jane.smith@work.com', dob: '1980-05-15', ssn: '123-45-6789', occupation: 'software engineer', gender: 'female', marital_status: 'married'},
+{record_id: 8, name: 'J. Smith', address: '783 Cliffview Road, Cityville, CA 12345', phone: '555-012-3456', email: 'jane.smith@work.com', dob: '05/15/1980', ssn: '123-45-6789', occupation: 'engineer', gender: 'female', marital_status: 'married'}
+]
